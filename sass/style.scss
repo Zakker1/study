@@ -1,0 +1,342 @@
+// Variables
+$primary-color: #2c3e50;
+$secondary-color: #34495e;
+$accent-color: #3498db;
+$background-color: #f5f6fa;
+$text-color: #2c3e50;
+$border-color: #dcdde1;
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+// Reset and base styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: $text-color;
+    background-color: $background-color;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+// Navigation
+.main-nav {
+    background-color: $primary-color;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        h1 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+    }
+
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+
+        .nav-item {
+            .nav-link {
+                color: white;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.5rem 1rem;
+                border-radius: 4px;
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: $secondary-color;
+                }
+
+                &.active {
+                    background-color: $secondary-color !important;
+                    color: white !important;
+                }
+
+                i {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}
+
+// Main content
+.main-content {
+    padding: 2rem 0;
+
+    .content-section {
+        background-color: white;
+        border-radius: 8px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+        h2 {
+            margin-bottom: 1.5rem;
+            color: $primary-color;
+        }
+
+        &.hidden {
+            display: none !important;
+        }
+    }
+}
+
+// Forms
+.form-group {
+    margin-bottom: 1.5rem;
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+
+    input,
+    select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        font-size: 1rem;
+
+        &:focus {
+            outline: none;
+            border-color: $accent-color;
+        }
+    }
+}
+
+// Buttons
+.btn {
+    @include button;
+    
+    &.btn-primary {
+        background-color: $accent-color;
+        color: white;
+
+        &:hover {
+            background-color: darken($accent-color, 10%);
+        }
+    }
+}
+
+// Settings
+.settings-container {
+    max-width: 600px;
+    
+    .setting-group {
+        margin-bottom: 1.5rem;
+    }
+}
+
+// Report controls
+.report-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+
+    .date-range {
+        display: flex;
+        gap: 1rem;
+    }
+}
+
+// Table styles
+.table-container {
+    overflow-x: auto;
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid $border-color;
+        }
+        
+        th {
+            background-color: lighten($primary-color, 70%);
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background-color: lighten($primary-color, 75%);
+        }
+    }
+}
+
+// Стили для фильтров
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: lighten($primary-color, 75%);
+    border-radius: 4px;
+
+    .filter-group {
+        flex: 1;
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid $border-color;
+            border-radius: 4px;
+            background-color: white;
+
+            &:focus {
+                outline: none;
+                border-color: $accent-color;
+            }
+        }
+    }
+}
+
+// Стили для DataTables
+.dataTables_wrapper {
+    margin-top: 1rem;
+
+    .dataTables_filter,
+    .dataTables_length {
+        margin-bottom: 1rem;
+    }
+
+    .dt-buttons {
+        margin-bottom: 1rem;
+
+        .dt-button {
+            @include button;
+            background-color: $primary-color;
+            color: white;
+            margin-right: 0.5rem;
+
+            &:hover {
+                background-color: darken($primary-color, 10%);
+            }
+        }
+    }
+
+    table.dataTable {
+        border-collapse: collapse;
+        width: 100%;
+
+        thead {
+            th {
+                background-color: $primary-color;
+                color: white;
+                padding: 1rem;
+                font-weight: 500;
+            }
+        }
+
+        tbody {
+            tr {
+                &:nth-child(even) {
+                    background-color: lighten($primary-color, 75%);
+                }
+
+                &:hover {
+                    background-color: lighten($accent-color, 45%);
+                }
+
+                td {
+                    padding: 0.75rem 1rem;
+                    border-bottom: 1px solid $border-color;
+                }
+            }
+        }
+    }
+
+    .dataTables_paginate {
+        margin-top: 1rem;
+
+        .paginate_button {
+            padding: 0.5rem 1rem;
+            margin: 0 0.25rem;
+            border: 1px solid $border-color;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &.current {
+                background-color: $accent-color;
+                color: white;
+                border-color: $accent-color;
+            }
+
+            &:hover {
+                background-color: lighten($accent-color, 45%);
+            }
+        }
+    }
+}
+
+// Стили для кнопок действий в таблице
+.btn-edit,
+.btn-delete,
+.btn-view {
+    @include button;
+    padding: 0.5rem;
+    margin: 0 0.25rem;
+    
+    i {
+        font-size: 1rem;
+    }
+}
+
+.btn-edit {
+    background-color: $accent-color;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-view {
+    background-color: #2ecc71;
+    color: white;
+}

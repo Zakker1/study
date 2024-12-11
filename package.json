@@ -1,0 +1,11 @@
+{
+  "name": "new_site",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "sass": "sass sass/style.scss:css/style.css --watch"
+  },
+  "dependencies": {
+    "sass": "^1.69.5"
+  }
+}
